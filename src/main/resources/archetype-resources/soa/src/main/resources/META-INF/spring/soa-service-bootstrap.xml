@@ -1,0 +1,56 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ - Copyright 1999-2011 Alibaba Group.
+ -  
+ - Licensed under the Apache License, Version 2.0 (the "License");
+ - you may not use this file except in compliance with the License.
+ - You may obtain a copy of the License at
+ -  
+ -      http://www.apache.org/licenses/LICENSE-2.0
+ -  
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+
+    <!-- 应用信息,用于计算依赖关系 -->
+    <dubbo:application name="${symbol_dollar}{dubbo.service.name}" owner="Telematics" organization="Chehejia"/>
+
+    <!-- 使用zookeeper注册中心 -->
+    <dubbo:registry protocol="zookeeper" address="${symbol_dollar}{zk.server}" />
+
+    <!--uncomment this if you want to test dubbo's monitor-->
+    <dubbo:monitor protocol="registry"/>
+
+    <!-- here we demonstrate both annotation-based and xml-based configs -->
+    <dubbo:annotation package="com.alibaba.dubbo.demo.user.facade" />
+
+    <!-- 使用dubbo协议 -->
+    <dubbo:protocol name="dubbo" port="${symbol_dollar}{dubbo.service.port}" serialization="kryo"
+                    optimizer="${package}.rpc.protocol.SerializationOptimizerImpl"
+    />
+
+    <!-- 设定dubbo默认参数 -->
+    <dubbo:provider timeout="50000" retries="1" />
+    <dubbo:consumer timeout="50000" retries="1" />
+
+
+
+    <import resource="classpath*:spring/spring-config-pubsub-sub.xml" />
+    <import resource="classpath*:spring/spring-config-dao.xml" />
+    <import resource="classpath*:spring/spring-config-dataSource.xml" />
+    <import resource="classpath*:context/soa-service-*.xml"/>
+
+</beans>

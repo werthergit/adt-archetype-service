@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.adt.archetype</groupId>
+  <artifactId>adt-archetype-service</artifactId>
+  <version>0.1.0.0-SNAPSHOT</version>
+  <packaging>maven-archetype</packaging>
+
+  <name>adt-archetype-service</name>
+
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.archetype</groupId>
+        <artifactId>archetype-packaging</artifactId>
+        <version>2.4</version>
+      </extension>
+    </extensions>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>2.4</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <description>Java系统全局POM，管理全部代码的公共依赖</description>
+
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id>
+      <url>http://nexus.adt.com/nexus/content/repositories/dev-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://nexus.adt.com/nexus/content/repositories/dev-snapshots/</url>
+    </snapshotRepository>
+    <site>
+      <id>app-site</id>
+      <url>scp://172.26.0.69/opt/appm/deploy/</url>
+    </site>
+  </distributionManagement>
+</project>

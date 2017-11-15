@@ -1,0 +1,51 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <properties resource="generator/config.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8" />
+
+
+        <plugin type="${symbol_dollar}{mapper.plugin}">
+            <property name="mappers" value="${symbol_dollar}{mapper.mapper}"/>
+            <property name="parentDomain" value="${symbol_dollar}{mapper.parentDomain}" />
+        </plugin>
+
+        <jdbcConnection driverClass="${symbol_dollar}{jdbc.driverClass}"
+                        connectionURL="${symbol_dollar}{jdbc.urlMapping}"
+                        userId="${symbol_dollar}{jdbc.user}" password="${symbol_dollar}{jdbc.password}"/>
+
+        <!-- 指定生成的类型为java类型，避免数据库中number等类型字段 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成model模型，对应的包，存放位置可以指定具体的路径,如/ProjectName/src，也可以使用MAVEN来自动生成 -->
+        <javaModelGenerator targetPackage="${symbol_dollar}{package.domain}" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </javaModelGenerator>
+
+        <!--对应的xml mapper文件  -->
+        <sqlMapGenerator targetPackage="${symbol_dollar}{package.dao}" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 对应的dao接口 -MAP Interface-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${symbol_dollar}{package.dao}" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <table tableName="${tablePrefix}_%"/>
+    </context>
+</generatorConfiguration>
