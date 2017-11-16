@@ -31,13 +31,13 @@
   <description>Java系统全局POM，管理全部代码的公共依赖</description>
 
   <distributionManagement>
-    <repository>
-      <id>nexus-releases</id>
+    <!--<repository>
+      <id>adt-test</id>
       <url>http://nexus.adt.com/nexus/content/repositories/dev-releases/</url>
-    </repository>
+    </repository>-->
     <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <url>http://nexus.adt.com/nexus/content/repositories/dev-snapshots/</url>
+      <id>adt-dev</id>
+      <url>http://localhost:8081/nexus/content/repositories/adt-dev/</url>
     </snapshotRepository>
     <site>
       <id>app-site</id>

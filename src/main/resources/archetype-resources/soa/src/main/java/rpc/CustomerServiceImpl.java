@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.user.rpc;
+package ${package}.rpc;
 
 import com.adt.framework.common.mydao.model.PageParams;
 import com.adt.framework.common.mydao.model.PageResults;

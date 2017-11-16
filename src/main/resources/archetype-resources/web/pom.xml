@@ -126,8 +126,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.adt.front.user</groupId>
-            <artifactId>adt-front-user-rpc</artifactId>
+            <groupId>${groupId}.${service}</groupId>
+            <artifactId>${rootArtifactId}-rpc</artifactId>
         </dependency>
         <dependency>
             <groupId>com.adt.framework</groupId>
@@ -136,7 +136,7 @@
     </dependencies>
 
     <build>
-        <finalName>adt-front-user-web</finalName>
+        <finalName>{groupId}-web</finalName>
         <plugins>
             <!-- tomcat-maven-plugin -->
             <plugin>

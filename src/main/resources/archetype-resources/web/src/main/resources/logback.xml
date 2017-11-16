@@ -73,7 +73,7 @@
 		<appender-ref ref="asyncAll" />
 	</root>
  	
-	<logger name="com.chehejia">
+	<logger name="com.adt">
 		<level value="DEBUG" />
 		<appender-ref ref="stdout"></appender-ref>
 	</logger>
@@ -83,7 +83,7 @@
 		<level value="INFO"/>
 	</logger>
 
-	<logger name="com.chehejia.front.info.dao" additivity="false">
+	<logger name="com.adt.front.info.dao" additivity="false">
 		<level value="${log.sql.parameter.trace}" />
 		<appender-ref ref="sqlFile" />
 		<appender-ref ref="stdout" />

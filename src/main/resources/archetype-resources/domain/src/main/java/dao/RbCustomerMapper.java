@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 package ${package}.dao;
-import ${package}.domain.AcotAccount;
+import ${package}.domain.RbCustomer;
 
 import com.adt.framework.common.mydao.dao.mybatis.BasicMapper;
 
